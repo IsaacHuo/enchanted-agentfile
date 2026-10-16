@@ -1,0 +1,38 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # There are no dependencies to install: the CLI uses Node built-ins only.
+      - name: lint (dependency + hygiene)
+        run: npm run lint
+
+      - name: typecheck (static link check)
+        run: npm run typecheck
+
+      - name: unit and end-to-end tests
+        run: npm test
+
+      # Drift gate: the repository keeps its own generated agent files in sync
+      # with AGENTS.md. This step fails if any of them drift out of sync.
+      - name: self drift gate
+        run: npm run selfcheck

@@ -1,0 +1,4 @@
+{
+  "source": "AGENTS.md",
+  "tools": ["claude", "cursor", "copilot", "gemini"]
+}

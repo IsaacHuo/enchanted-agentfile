@@ -1,0 +1,53 @@
+{
+  "name": "enchanted-agentfile",
+  "version": "0.1.0",
+  "description": "Zero-dependency CLI that makes AGENTS.md authoritative and keeps every supported AI coding agent's instruction file in sync, with a CI drift gate and an honest effective-context doctor.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "enchanted-agentfile": "bin/enchanted-agentfile.mjs"
+  },
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": "./lib/index.mjs"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "lint": "node scripts/lint.mjs",
+    "typecheck": "node scripts/typecheck.mjs",
+    "test": "node --test",
+    "sync": "node bin/enchanted-agentfile.mjs sync",
+    "diff": "node bin/enchanted-agentfile.mjs diff",
+    "check": "node bin/enchanted-agentfile.mjs check",
+    "doctor": "node bin/enchanted-agentfile.mjs doctor",
+    "selfcheck": "node bin/enchanted-agentfile.mjs check"
+  },
+  "keywords": [
+    "agents.md",
+    "agentsmd",
+    "claude-code",
+    "claude.md",
+    "cursor",
+    "copilot",
+    "gemini-cli",
+    "windsurf",
+    "cline",
+    "aider",
+    "ai-agents",
+    "instructions",
+    "drift",
+    "ci"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsaacHuo/enchanted-agentfile.git"
+  }
+}
